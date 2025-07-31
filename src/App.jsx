@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 function App() {
 const [position, setPosition] = useState({ lat: null, lng: null });
+const [error, seterror] = useState(null);
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.watchPosition(
@@ -14,6 +15,7 @@ const [position, setPosition] = useState({ lat: null, lng: null });
         },
         (err) => {
           console.error("Error getting location:", err);
+          seterror("Not working")
         },
         {
           enableHighAccuracy: true,
@@ -29,6 +31,7 @@ const [position, setPosition] = useState({ lat: null, lng: null });
   return (
     <>
     <div>
+     {error && <h1>Error: {error}</h1>}
       <h2>Your Current Location</h2>
       <p>Latitude: {position.lat}</p>
       <p>Longitude: {position.lng}</p>
