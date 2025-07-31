@@ -33,7 +33,7 @@ const [error, seterror] = useState(null);
     <>
     <div>
      {error && <h1>Error: {error}</h1>}
-      <h2>Your Current Location</h2>
+      <h2 className='text-4xl'>Your Current Location</h2>
       <p>Latitude: {position.lat}</p>
       <p>Longitude: {position.lng}</p>
     </div>
