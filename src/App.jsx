@@ -1,5 +1,6 @@
 console.log("changes")
 import { useEffect, useState } from 'react'
+import Container from './Leaflet/Container.jsx'
 
 function App() {
 const [position, setPosition] = useState({ lat: null, lng: null });
@@ -16,7 +17,7 @@ const [error, seterror] = useState(null);
         },
         (err) => {
           console.error("Error getting location:", err);
-          seterror("Not working")
+          seterror("Turn on location")
         },
         {
           enableHighAccuracy: true,
@@ -37,6 +38,9 @@ const [error, seterror] = useState(null);
       <p>Latitude: {position.lat}</p>
       <p>Longitude: {position.lng}</p>
     </div>
+     <div className="h-screen w-screen border-2 border-black">
+    <Container lat={position.lat} lng={position.lng} />
+     </div>
     </>
   )
 }
