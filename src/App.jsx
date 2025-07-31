@@ -12,6 +12,7 @@ const [error, seterror] = useState(null);
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
           });
+          seterror(null);
         },
         (err) => {
           console.error("Error getting location:", err);
