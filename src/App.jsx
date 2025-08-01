@@ -38,7 +38,7 @@ const [error, seterror] = useState(null);
       <p>Latitude: {position.lat}</p>
       <p>Longitude: {position.lng}</p>
     </div>
-     <div className="h-screen w-screen border-2 border-black">
+     <div className="h-96 w-screen border-2 border-black overflow-hidden">
     <Container lat={position.lat} lng={position.lng} />
      </div>
     </>
