@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 console.log("geoapi");
 
 function useGeoLocationApi() {
-  const [position, setPosition] = useState({ lat: null, lng: null });
+  const [position, setPosition] = useState({ lat: 0, lng: 0 });
   const [error, seterror] = useState(null);
 
   useEffect(() => {
-    if ("geolocation" in navigator) {
+    const GeoApi = ()=>{
+       if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           setPosition({
@@ -29,6 +30,11 @@ function useGeoLocationApi() {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
+    }
+    GeoApi();
+    setInterval(() => {
+      GeoApi();
+    }, 60000);
   }, []);
 
   return [position,error];
